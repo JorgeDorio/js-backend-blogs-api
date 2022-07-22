@@ -10,19 +10,19 @@ module.exports = {
       },
       displayName: {
         type: Sequelize.STRING(126).BINARY,
-        primaryKey: true
+        allowNull: false,
       },
       email: {
         type: Sequelize.STRING(126).BINARY,
-        primaryKey: true
+        allowNull: false,
       },
       password: {
         type: Sequelize.STRING(126).BINARY,
-        primaryKey: true
+        allowNull: false,
       },
       image: {
         type: Sequelize.STRING(126).BINARY,
-        primaryKey: true
+        allowNull: false,
       },
     });
   },
