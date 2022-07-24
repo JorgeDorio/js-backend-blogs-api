@@ -5,4 +5,10 @@ const newCategory = async (name) => {
   return insert;
 };
 
-module.exports = { newCategory };
+const listCategories = async () => {
+  const request = await Category.findAll();
+  const categories = request.map((category) => category.dataValues);
+  return categories;
+};
+
+module.exports = { newCategory, listCategories };

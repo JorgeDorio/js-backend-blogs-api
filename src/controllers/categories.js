@@ -7,4 +7,9 @@ const newCategory = async (req, res) => {
   return res.status(201).json(category);
 };
 
-module.exports = { newCategory };
+const listCategories = async (_req, res) => {
+  const request = await servicer.listCategories();
+  return res.status(200).json(request);
+};
+
+module.exports = { newCategory, listCategories };
