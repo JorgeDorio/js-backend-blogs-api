@@ -14,7 +14,18 @@ const BlogPost = (sequelize, DataTypes) => {
       foreignKey: true,
       type: DataTypes.INTEGER
     },
+    published: DataTypes.DATE,
+    updated: DataTypes.DATE,
+  }, {
+    tableName: 'BlogPosts',
+    createdAt: 'published',
+    updatedAt: 'updated',
   })
+
+  BlogPost.associate = (models) => {
+    BlogPost.belongsTo(models.User, { as: 'user', foreignKey: 'userId', onDelete: 'CASCADE' });
+  };
+
   return BlogPost;
 }
 
