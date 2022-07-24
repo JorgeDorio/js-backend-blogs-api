@@ -4,4 +4,10 @@ const createUser = async (payload) => {
   await User.create(payload);
 };
 
-module.exports = { createUser };
+const listUsers = async () => {
+  const request = await User.findAll({ attributes: ['id', 'displayName', 'email', 'image'] });
+  const users = request.map((user) => user.dataValues);
+  return users;
+};
+
+module.exports = { createUser, listUsers };

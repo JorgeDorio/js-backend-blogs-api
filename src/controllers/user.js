@@ -1,4 +1,4 @@
-const { CREATED } = require('../HTTP_STATUS');
+const { CREATED, OK } = require('../HTTP_STATUS');
 const servicer = require('../services/user');
 
 const newUser = async (req, res) => {
@@ -7,4 +7,9 @@ const newUser = async (req, res) => {
   res.status(CREATED).json({ token });
 };
 
-module.exports = { newUser };
+const listUsers = async (_req, res) => {
+  const users = await servicer.listUsers();
+  res.status(OK).json(users);
+};
+
+module.exports = { newUser, listUsers };
