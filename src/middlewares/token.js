@@ -15,7 +15,7 @@ const tokenValidation = (req, res, next) => {
       console.log(req.user);
     }
   } catch (_e) {
-    res.status(401).json({ message: 'Expired or invalid token' });
+    return res.status(401).json({ message: 'Expired or invalid token' });
   }
   next();
 };

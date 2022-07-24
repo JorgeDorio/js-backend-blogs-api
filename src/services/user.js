@@ -10,4 +10,15 @@ const listUsers = async () => {
   return users;
 };
 
-module.exports = { createUser, listUsers };
+const listUserById = async (Id) => {
+  try {
+    const { dataValues } = await User.findByPk(Id);
+    const { id, displayName, email, image } = dataValues;
+    const user = { id, displayName, email, image };
+    return user;
+  } catch (_e) {
+    return false;
+  }
+};
+
+module.exports = { createUser, listUsers, listUserById };

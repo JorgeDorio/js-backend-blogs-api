@@ -12,4 +12,13 @@ const listUsers = async (_req, res) => {
   res.status(OK).json(users);
 };
 
-module.exports = { newUser, listUsers };
+const listUserById = async (req, res) => {
+  const { id } = req.params;
+  const user = await servicer.listUserById(id);
+  if (!user) {
+    return res.status(404).json({ message: 'User does not exist' });
+  }
+  return res.status(200).json(user);
+};
+
+module.exports = { newUser, listUsers, listUserById };
