@@ -10,9 +10,8 @@ const tokenValidation = (req, res, next) => {
   try {
     const data = jwt.verify(authorization, key);
 
-    if (data.displayName) {
-      req.user = data.displayName;
-      console.log(req.user);
+    if (data.email) {
+      req.userEmail = data.email;
     }
   } catch (_e) {
     return res.status(401).json({ message: 'Expired or invalid token' });
